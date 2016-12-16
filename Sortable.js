@@ -575,6 +575,13 @@
 
 			moved = true;
 
+			// UPDATED
+			// Here set the parent to source when dropping back on it even if sort is deactivated
+			// Without this, when dropping back on source, it still drops on the last other targetable list found
+			if (isOwner && !canSort) {
+				parentEl = dragEl.parentNode;
+			}
+
 			if (activeGroup && !options.disabled &&
 				(isOwner
 					? canSort || (revert = !rootEl.contains(dragEl)) // Reverting item into the original list
